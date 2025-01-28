@@ -25,7 +25,7 @@ class ExampleControllerTest : RestDocsTestSupport() {
     }
 
     @Test
-    fun `샘플 GET API`() {
+    fun `개선 전 GET API 문서`() {
         given()
             .contentType(ContentType.JSON)
             .get("/api/v1/example")
@@ -33,20 +33,20 @@ class ExampleControllerTest : RestDocsTestSupport() {
             .status(HttpStatus.OK)
             .apply(
                 document(
-                    "GET",
+                    "before-GET",
                     requestPreprocessor(),
                     responsePreprocessor(),
                     responseFields(
                         fieldWithPath("id").type(NUMBER).description("아이디"),
                         fieldWithPath("name").type(STRING).description("이름"),
-                        fieldWithPath("type").type(STRING).description(generateEnumPopupLink("샘플 타입", ExampleType::class)),
+                        fieldWithPath("type").type(STRING).description("타입(TYPE1 : 샘플 타입1 / TYPE2 : 샘플 타입2)"),
                     ),
                 ),
             )
     }
 
     @Test
-    fun `샘플 POST API`() {
+    fun `개선 전 POST API 문서`() {
         val request = PostExampleRequest(
             name = "example",
             type = ExampleType.TYPE1,
@@ -59,7 +59,58 @@ class ExampleControllerTest : RestDocsTestSupport() {
             .status(HttpStatus.OK)
             .apply(
                 document(
-                    "POST",
+                    "before-POST",
+                    requestPreprocessor(),
+                    responsePreprocessor(),
+                    requestFields(
+                        fieldWithPath("name").type(STRING).description("이름"),
+                        fieldWithPath("type").type(STRING).description("타입(TYPE1 : 샘플 타입1 / TYPE2 : 샘플 타입2)"),
+                    ),
+                    responseFields(
+                        fieldWithPath("id").type(NUMBER).description("아이디"),
+                        fieldWithPath("name").type(STRING).description("이름"),
+                        fieldWithPath("type").type(STRING).description("타입(TYPE1 : 샘플 타입1 / TYPE2 : 샘플 타입2)"),
+                    ),
+                ),
+            )
+    }
+
+    @Test
+    fun `개선 후 GET API 문서`() {
+        given()
+            .contentType(ContentType.JSON)
+            .get("/api/v1/example")
+            .then()
+            .status(HttpStatus.OK)
+            .apply(
+                document(
+                    "after-GET",
+                    requestPreprocessor(),
+                    responsePreprocessor(),
+                    responseFields(
+                        fieldWithPath("id").type(NUMBER).description("아이디"),
+                        fieldWithPath("name").type(STRING).description("이름"),
+                        fieldWithPath("type").type(STRING).description(generateEnumPopupLink("샘플 타입", ExampleType::class)),
+                    ),
+                ),
+            )
+    }
+
+    @Test
+    fun `개선 후 POST API 문서`() {
+        val request = PostExampleRequest(
+            name = "example",
+            type = ExampleType.TYPE1,
+        )
+        given()
+            .contentType(ContentType.JSON)
+            .body(request)
+            .post("/api/v1/example")
+            .then()
+            .status(HttpStatus.OK)
+            .apply(
+                document(
+                    "after-POST",
                     requestPreprocessor(),
                     responsePreprocessor(),
                     requestFields(

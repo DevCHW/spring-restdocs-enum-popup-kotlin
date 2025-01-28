@@ -11,26 +11,46 @@ endif::[]
 :sectlinks:
 :docinfo: shared-head
 
-== Example
-
-&#160;
+== 개선 전
 
 === GET
 ==== Request HTTP Example
-include::{snippets}/GET/http-request.adoc[]
+include::{snippets}/before-GET/http-request.adoc[]
 ==== Response HTTP Example
-include::{snippets}/GET/http-response.adoc[]
+include::{snippets}/before-GET/http-response.adoc[]
 ==== Response Fields
-include::{snippets}/GET/response-fields.adoc[]
+include::{snippets}/before-GET/response-fields.adoc[]
 
 &#160;
 
 === POST
 ==== Request HTTP Example
-include::{snippets}/POST/http-request.adoc[]
+include::{snippets}/before-POST/http-request.adoc[]
 ==== Request Fields
-include::{snippets}/POST/request-fields.adoc[]
+include::{snippets}/before-POST/request-fields.adoc[]
 ==== Response HTTP Example
-include::{snippets}/POST/http-response.adoc[]
+include::{snippets}/before-POST/http-response.adoc[]
 ==== Response Fields
-include::{snippets}/POST/response-fields.adoc[]
+include::{snippets}/before-POST/response-fields.adoc[]
+
+== 개선 후
+
+=== GET
+==== Request HTTP Example
+include::{snippets}/after-GET/http-request.adoc[]
+==== Response HTTP Example
+include::{snippets}/after-GET/http-response.adoc[]
+==== Response Fields
+include::{snippets}/after-GET/response-fields.adoc[]
+
+&#160;
+
+=== POST
+==== Request HTTP Example
+include::{snippets}/after-POST/http-request.adoc[]
+==== Request Fields
+include::{snippets}/after-POST/request-fields.adoc[]
+==== Response HTTP Example
+include::{snippets}/after-POST/http-response.adoc[]
+==== Response Fields
+include::{snippets}/after-POST/response-fields.adoc[]
