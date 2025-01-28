@@ -1,0 +1,7 @@
+ifndef::snippets[]
+:snippets: build/generated-snippets
+endif::[]
+= ExampleType
+:doctype: book
+
+include::{snippets}/enums/enum-response-fields-ExampleType.adoc[]

@@ -1,0 +1,9 @@
+[source,json,options="nowrap"]
+----
+{
+  "ExampleType" : {
+    "TYPE1" : "샘플 타입1",
+    "TYPE2" : "샘플 타입2"
+  }
+}
+----

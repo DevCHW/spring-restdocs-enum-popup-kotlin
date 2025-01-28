@@ -1,0 +1,36 @@
+ifndef::snippets[]
+:snippets: build/generated-snippets
+endif::[]
+= Example REST API 문서
+:hardbreaks:
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 2
+:sectlinks:
+:docinfo: shared-head
+
+== Example
+
+&#160;
+
+=== GET
+==== Request HTTP Example
+include::{snippets}/GET/http-request.adoc[]
+==== Response HTTP Example
+include::{snippets}/GET/http-response.adoc[]
+==== Response Fields
+include::{snippets}/GET/response-fields.adoc[]
+
+&#160;
+
+=== POST
+==== Request HTTP Example
+include::{snippets}/POST/http-request.adoc[]
+==== Request Fields
+include::{snippets}/POST/request-fields.adoc[]
+==== Response HTTP Example
+include::{snippets}/POST/http-response.adoc[]
+==== Response Fields
+include::{snippets}/POST/response-fields.adoc[]

@@ -1,0 +1,29 @@
+{
+  "operationId" : "enums",
+  "summary" : null,
+  "description" : null,
+  "privateResource" : false,
+  "deprecated" : false,
+  "request" : {
+    "path" : "/api/v1/enums",
+    "method" : "GET",
+    "contentType" : null,
+    "schema" : null,
+    "headers" : [ ],
+    "pathParameters" : [ ],
+    "queryParameters" : [ ],
+    "formParameters" : [ ],
+    "requestFields" : [ ],
+    "example" : null,
+    "securityRequirements" : null
+  },
+  "response" : {
+    "status" : 200,
+    "contentType" : "application/json",
+    "schema" : null,
+    "headers" : [ ],
+    "responseFields" : [ ],
+    "example" : "{\n  \"ExampleType\" : {\n    \"TYPE1\" : \"샘플 타입1\",\n    \"TYPE2\" : \"샘플 타입2\"\n  }\n}"
+  },
+  "tags" : [ "api" ]
+}

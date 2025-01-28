@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="io.devchw.example.controller.ExampleControllerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2025-01-28T18:00:00" hostname="hyunwooui-MacBookAir.local" time="0.576">
+  <properties/>
+  <testcase name="샘플 POST API()" classname="io.devchw.example.controller.ExampleControllerTest" time="0.497"/>
+  <testcase name="샘플 GET API()" classname="io.devchw.example.controller.ExampleControllerTest" time="0.079"/>
+  <system-out><![CDATA[2025-01-28T18:00:01.027Z  INFO 33533 --- [spring-restdocs-advenced] [    Test worker] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-01-28T18:00:01.027Z  INFO 33533 --- [spring-restdocs-advenced] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-01-28T18:00:01.028Z  INFO 33533 --- [spring-restdocs-advenced] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+Request method:	POST
+Request URI:	http://localhost:8080/api/v1/example
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:
+{
+    "name": "example",
+    "type": "TYPE1"
+}
+2025-01-28T18:00:01.439Z  INFO 33533 --- [spring-restdocs-advenced] [    Test worker] o.s.mock.web.MockServletContext          : Initializing Spring TestDispatcherServlet ''
+2025-01-28T18:00:01.439Z  INFO 33533 --- [spring-restdocs-advenced] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-01-28T18:00:01.440Z  INFO 33533 --- [spring-restdocs-advenced] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+Request method:	GET
+Request URI:	http://localhost:8080/api/v1/example
+Proxy:			<none>
+Request params:	<none>
+Query params:	<none>
+Form params:	<none>
+Path params:	<none>
+Headers:		Content-Type=application/json
+Cookies:		<none>
+Multiparts:		<none>
+Body:			<none>
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

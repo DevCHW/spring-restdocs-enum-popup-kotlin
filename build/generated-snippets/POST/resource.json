@@ -1,0 +1,64 @@
+{
+  "operationId" : "POST",
+  "summary" : null,
+  "description" : null,
+  "privateResource" : false,
+  "deprecated" : false,
+  "request" : {
+    "path" : "/api/v1/example",
+    "method" : "POST",
+    "contentType" : "application/json;charset=UTF-8",
+    "schema" : null,
+    "headers" : [ ],
+    "pathParameters" : [ ],
+    "queryParameters" : [ ],
+    "formParameters" : [ ],
+    "requestFields" : [ {
+      "attributes" : { },
+      "description" : "이름",
+      "ignored" : false,
+      "path" : "name",
+      "type" : "STRING",
+      "optional" : false
+    }, {
+      "attributes" : { },
+      "description" : "link:enums/ExampleType.html[샘플 타입,role=\"popup\"]",
+      "ignored" : false,
+      "path" : "type",
+      "type" : "STRING",
+      "optional" : false
+    } ],
+    "example" : "{\n  \"name\" : \"example\",\n  \"type\" : \"TYPE1\"\n}",
+    "securityRequirements" : null
+  },
+  "response" : {
+    "status" : 200,
+    "contentType" : "application/json",
+    "schema" : null,
+    "headers" : [ ],
+    "responseFields" : [ {
+      "attributes" : { },
+      "description" : "아이디",
+      "ignored" : false,
+      "path" : "id",
+      "type" : "NUMBER",
+      "optional" : false
+    }, {
+      "attributes" : { },
+      "description" : "이름",
+      "ignored" : false,
+      "path" : "name",
+      "type" : "STRING",
+      "optional" : false
+    }, {
+      "attributes" : { },
+      "description" : "link:enums/ExampleType.html[샘플 타입,role=\"popup\"]",
+      "ignored" : false,
+      "path" : "type",
+      "type" : "STRING",
+      "optional" : false
+    } ],
+    "example" : "{\n  \"id\" : 1,\n  \"name\" : \"example\",\n  \"type\" : \"TYPE1\"\n}"
+  },
+  "tags" : [ "api" ]
+}
