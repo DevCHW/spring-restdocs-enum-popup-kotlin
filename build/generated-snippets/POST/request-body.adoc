@@ -1,7 +1,0 @@
-[source,json,options="nowrap"]
-----
-{
-  "name" : "example",
-  "type" : "TYPE1"
-}
-----

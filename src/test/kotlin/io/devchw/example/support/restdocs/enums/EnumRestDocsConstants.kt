@@ -6,5 +6,6 @@ interface EnumRestDocsConstants {
         const val DEFAULT_SNIPPET_DIR = "build/generated-snippets"
         const val ENUM_DOCUMENT_ID = "enums"
         const val ENUM_SNIPPET_NAME = "enum-response-fields"
+        const val ENUM_BASE_PACKAGE = "io.devchw.example"
     }
 }

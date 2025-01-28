@@ -17,20 +17,20 @@ import org.springframework.restdocs.snippet.Snippet
 class EnumSnippetGenerator : RestDocsTestSupport() {
 
     private val enumAdocGenerator: EnumAdocGenerator = EnumAdocGenerator()
-    private lateinit var enumQueryService: EnumQueryService
+    private lateinit var enumMetadataReader: EnumMetadataReader
     private lateinit var enumDocumentController: EnumDocumentController
 
     @BeforeEach
     fun setUp() {
-        enumQueryService = EnumQueryService()
-        enumDocumentController = EnumDocumentController(enumQueryService)
+        enumMetadataReader = EnumMetadataReader()
+        enumDocumentController = EnumDocumentController(enumMetadataReader)
         mockMvc = mockController(enumDocumentController)
     }
 
     @Test
     @DisplayName("Enum 스니펫 생성")
     fun generateEnumSnippets() {
-        val enumMap = enumQueryService.getEnums()
+        val enumMap = enumMetadataReader.getEnumsMetaData()
         // asciidoc 파일 생성
         enumAdocGenerator.generateEnumAdoc(enumMap.keys)
 
@@ -50,12 +50,10 @@ class EnumSnippetGenerator : RestDocsTestSupport() {
             )
     }
 
-    private fun generateEnumSnippets(enums: Map<String, Set<RestDocsDocumentEnum>>): Array<Snippet> {
+    private fun generateEnumSnippets(enums: Map<String, Set<EnumMetaData>>): Array<Snippet> {
         return enums.keys
             .map { key ->
-                println("key하하 = ${key}")
                 customResponseFields(
-//                    beneathPath("enumMap.$key").withSubsectionId(key),
                     beneathPath(key).withSubsectionId(key),
                     attributes(key("title").value(key)),
                     *enumConvertFieldDescriptor(enums[key]!!)
@@ -64,7 +62,7 @@ class EnumSnippetGenerator : RestDocsTestSupport() {
             .toTypedArray()
     }
 
-    private fun enumConvertFieldDescriptor(enums: Set<RestDocsDocumentEnum>): Array<FieldDescriptor> {
+    private fun enumConvertFieldDescriptor(enums: Set<EnumMetaData>): Array<FieldDescriptor> {
         return enums.map {
             fieldWithPath(it.name).description(it.description)
         }.toTypedArray<FieldDescriptor>()

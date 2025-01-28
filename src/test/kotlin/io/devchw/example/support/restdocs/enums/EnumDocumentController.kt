@@ -6,12 +6,16 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class EnumDocumentController(
-    private val enumQueryService: EnumQueryService,
+    private val enumMetadataReader: EnumMetadataReader,
 ) {
     @GetMapping("/api/v1/enums")
     fun getEnums(): ResponseEntity<Map<String, Map<String, String>>> {
-        val enums = enumQueryService.getEnums()
+        val enums = enumMetadataReader.getEnumsMetaData()
+        val response = createResponse(enums)
+        return ResponseEntity.ok(response)
+    }
 
+    private fun createResponse(enums: Map<String, Set<EnumMetaData>>): MutableMap<String, Map<String, String>> {
         val responseMap = mutableMapOf<String, Map<String, String>>()
         enums.forEach { (key, value) ->
             val enumMap = mutableMapOf<String, String>()
@@ -20,6 +24,6 @@ class EnumDocumentController(
             }
             responseMap[key] = enumMap
         }
-        return ResponseEntity.ok(responseMap)
+        return responseMap
     }
 }

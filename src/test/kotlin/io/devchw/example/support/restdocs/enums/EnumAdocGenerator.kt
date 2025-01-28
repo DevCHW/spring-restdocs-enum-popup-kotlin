@@ -17,6 +17,14 @@ class EnumAdocGenerator {
             enumAdocDirectory.deleteRecursively()
         }
 
+        // 파일이 생성될 디렉토리 생성
+        if (!enumAdocDirectory.exists()) {
+            val isCreated = enumAdocDirectory.mkdirs()
+            if (!isCreated) {
+                throw IllegalStateException("디렉토리 생성에 실패하였습니다.")
+            }
+        }
+
         for (enumClassName in enumClassNames) {
             val sb = StringBuilder()
 
@@ -33,23 +41,14 @@ class EnumAdocGenerator {
                 .append(enumClassName)
                 .append(".adoc[]").append(System.lineSeparator())
 
-            // Enum Asciidoc 파일들을 넣을 디렉토리가 없다면 생성
-            val enumAdocDirectory = File(ENUM_ADOC_PATH)
-            if (!enumAdocDirectory.exists()) {
-                val isCreated = enumAdocDirectory.mkdirs()
-                if (!isCreated) {
-                    throw IllegalStateException("Enum asciidoc 파일을 만들 디렉토리 생성에 실패하였습니다.")
-                }
-            }
-
-            val enumAdoc = File(ENUM_ADOC_PATH + "/" + enumClassName + ".adoc")
+            val enumAdoc = File("${ENUM_ADOC_PATH}/${enumClassName}.adoc")
 
             try {
                 val os = FileOutputStream(enumAdoc)
                 os.write(sb.toString().toByteArray(charset("UTF-8")))
                 os.close()
             } catch (e: Exception) {
-                e.printStackTrace()
+                // nothing
             }
         }
     }
