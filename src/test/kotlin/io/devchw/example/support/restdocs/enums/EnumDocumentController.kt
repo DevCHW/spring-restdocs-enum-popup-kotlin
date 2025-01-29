@@ -15,7 +15,7 @@ class EnumDocumentController(
         return ResponseEntity.ok(response)
     }
 
-    private fun createResponse(enums: Map<String, Set<EnumMetaData>>): MutableMap<String, Map<String, String>> {
+    private fun createResponse(enums: Map<String, Set<EnumMetadata>>): MutableMap<String, Map<String, String>> {
         val responseMap = mutableMapOf<String, Map<String, String>>()
         enums.forEach { (key, value) ->
             val enumMap = mutableMapOf<String, String>()

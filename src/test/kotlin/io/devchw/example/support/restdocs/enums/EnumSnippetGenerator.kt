@@ -1,6 +1,7 @@
 package io.devchw.example.support.restdocs.enums
 
 import com.epages.restdocs.apispec.MockMvcRestDocumentationWrapper.document
+import com.epages.restdocs.apispec.ResourceSnippetParametersBuilder
 import com.hhplus.board.support.restdocs.RestDocsTestSupport
 import com.hhplus.board.support.restdocs.RestDocsUtils.requestPreprocessor
 import com.hhplus.board.support.restdocs.RestDocsUtils.responsePreprocessor
@@ -43,14 +44,17 @@ class EnumSnippetGenerator : RestDocsTestSupport() {
             .apply(
                 document(
                     "enums",
+                    ResourceSnippetParametersBuilder()
+                        .privateResource(true),
                     requestPreprocessor(),
                     responsePreprocessor(),
-                    *generateEnumSnippets(enumMap)
+                ).document(
+                    *generateEnumSnippets(enumMap),
                 ),
             )
     }
 
-    private fun generateEnumSnippets(enums: Map<String, Set<EnumMetaData>>): Array<Snippet> {
+    private fun generateEnumSnippets(enums: Map<String, Set<EnumMetadata>>): Array<Snippet> {
         return enums.keys
             .map { key ->
                 customResponseFields(
@@ -62,7 +66,7 @@ class EnumSnippetGenerator : RestDocsTestSupport() {
             .toTypedArray()
     }
 
-    private fun enumConvertFieldDescriptor(enums: Set<EnumMetaData>): Array<FieldDescriptor> {
+    private fun enumConvertFieldDescriptor(enums: Set<EnumMetadata>): Array<FieldDescriptor> {
         return enums.map {
             fieldWithPath(it.name).description(it.description)
         }.toTypedArray<FieldDescriptor>()

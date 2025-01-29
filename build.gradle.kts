@@ -1,3 +1,5 @@
+import org.gradle.internal.declarativedsl.schemaBuilder.schemaFromTypes
+
 plugins {
     kotlin("jvm")
     kotlin("kapt")
@@ -94,5 +96,15 @@ tasks.build {
 
 tasks.bootJar {
     dependsOn(tasks.getByName("copyDocument"))
+}
+
+// OpenAPI Specification
+configure<com.epages.restdocs.apispec.gradle.OpenApi3Extension> {
+    setServer("http://localhost:8080")
+    title = "샘플"
+    description = "Example API 문서"
+    version = "0.0.1"
+    format = "json"
+    outputDirectory = "build/resources/main/static"
 }
 

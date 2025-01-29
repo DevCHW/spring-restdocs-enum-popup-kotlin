@@ -11,6 +11,7 @@ import io.restassured.http.ContentType
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.http.HttpStatus
+import org.springframework.restdocs.mockmvc.RestDocumentationResultHandler
 import org.springframework.restdocs.payload.JsonFieldType.*
 import org.springframework.restdocs.payload.PayloadDocumentation.*
 
@@ -38,7 +39,7 @@ class ExampleControllerTest : RestDocsTestSupport() {
                     responsePreprocessor(),
                     responseFields(
                         fieldWithPath("id").type(NUMBER).description("아이디"),
-                        fieldWithPath("name").type(STRING).description("이름"),
+                        fieldWithPath("name").type(STRING).description("이름").optional(),
                         fieldWithPath("type").type(STRING).description("타입(TYPE1 : 샘플 타입1 / TYPE2 : 샘플 타입2)"),
                     ),
                 ),
@@ -115,12 +116,14 @@ class ExampleControllerTest : RestDocsTestSupport() {
                     responsePreprocessor(),
                     requestFields(
                         fieldWithPath("name").type(STRING).description("이름"),
-                        fieldWithPath("type").type(STRING).description(generateEnumPopupLink("샘플 타입", ExampleType::class)),
+                        fieldWithPath("type").type(STRING)
+                            .description(generateEnumPopupLink("샘플 타입", ExampleType::class)),
                     ),
                     responseFields(
                         fieldWithPath("id").type(NUMBER).description("아이디"),
                         fieldWithPath("name").type(STRING).description("이름"),
-                        fieldWithPath("type").type(STRING).description(generateEnumPopupLink("샘플 타입", ExampleType::class)),
+                        fieldWithPath("type").type(STRING)
+                            .description(generateEnumPopupLink("샘플 타입", ExampleType::class)),
                     ),
                 ),
             )

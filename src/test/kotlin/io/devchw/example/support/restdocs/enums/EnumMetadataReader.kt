@@ -7,7 +7,7 @@ import java.io.File
 @Component
 class EnumMetadataReader {
 
-    fun getEnumsMetaData(): Map<String, Set<EnumMetaData>> {
+    fun getEnumsMetaData(): Map<String, Set<EnumMetadata>> {
         val enumClasses = getEnumClassesFromPackage(ENUM_BASE_PACKAGE)
 
         return enumClasses
@@ -19,12 +19,12 @@ class EnumMetadataReader {
             )
     }
 
-    private fun getEnumConstants2(enumClass: Class<*>): Set<EnumMetaData> {
+    private fun getEnumConstants2(enumClass: Class<*>): Set<EnumMetadata> {
         // enum 클래스의 모든 enum 상수를 가져옵니다.
         val enumConstants = enumClass.enumConstants
 
         // 결과를 저장할 Set 생성
-        val restDocsDocumentEnumSet = mutableSetOf<EnumMetaData>()
+        val restDocsDocumentEnumSet = mutableSetOf<EnumMetadata>()
 
         // enum 상수들을 순회하면서 각 상수에 대해 리플렉션을 사용해 description을 가져옵니다.
         enumConstants.forEach { enumConstant ->
@@ -34,7 +34,7 @@ class EnumMetadataReader {
 
                 val description = descriptionField.get(enumConstant) as String
 
-                val restDocsDocumentEnum = EnumMetaData(
+                val restDocsDocumentEnum = EnumMetadata(
                     name = enumConstant.toString(),
                     description = description
                 )
