@@ -31,7 +31,7 @@ class EnumSnippetGenerator : RestDocsTestSupport() {
     @Test
     @DisplayName("Enum 스니펫 생성")
     fun generateEnumSnippets() {
-        val enumMap = enumMetadataReader.getEnumsMetaData()
+        val enumMap = enumMetadataReader.getEnumsMetadataMap()
         // asciidoc 파일 생성
         enumAdocGenerator.generateEnumAdoc(enumMap.keys)
 

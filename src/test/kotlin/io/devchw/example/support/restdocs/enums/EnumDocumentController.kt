@@ -10,7 +10,7 @@ class EnumDocumentController(
 ) {
     @GetMapping("/api/v1/enums")
     fun getEnums(): ResponseEntity<Map<String, Map<String, String>>> {
-        val enums = enumMetadataReader.getEnumsMetaData()
+        val enums = enumMetadataReader.getEnumsMetadataMap()
         val response = createResponse(enums)
         return ResponseEntity.ok(response)
     }

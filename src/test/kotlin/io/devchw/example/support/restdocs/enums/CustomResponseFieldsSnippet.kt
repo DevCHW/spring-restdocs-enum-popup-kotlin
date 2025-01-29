@@ -7,9 +7,9 @@ import org.springframework.restdocs.payload.FieldDescriptor
 import org.springframework.restdocs.payload.PayloadSubsectionExtractor
 
 class CustomResponseFieldsSnippet(
-    type: String?,
+    type: String = "enum-response",
     subsectionExtractor: PayloadSubsectionExtractor<*>?,
-    descriptors: List<FieldDescriptor?>?,
+    descriptors: List<FieldDescriptor?>,
     attributes: Map<String?, Any?>?,
     ignoreUndocumentedFields: Boolean,
 ) : AbstractFieldsSnippet(

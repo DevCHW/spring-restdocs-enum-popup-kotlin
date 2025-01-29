@@ -4,12 +4,15 @@ import io.devchw.example.support.restdocs.enums.EnumRestDocsConstants.Companion.
 import io.devchw.example.support.restdocs.enums.EnumRestDocsConstants.Companion.ENUM_DOCUMENT_ID
 import io.devchw.example.support.restdocs.enums.EnumRestDocsConstants.Companion.ENUM_SNIPPET_NAME
 import io.devchw.example.support.restdocs.enums.EnumRestDocsConstants.Companion.DEFAULT_SNIPPET_DIR
-import org.springframework.stereotype.Component
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import java.io.File
 import java.io.FileOutputStream
 
-@Component
 class EnumAdocGenerator {
+
+    private val log: Logger = LoggerFactory.getLogger(javaClass)
+
     fun generateEnumAdoc(enumClassNames: Set<String>) {
         // 파일이 생성될 디렉토리 삭제
         val enumAdocDirectory = File(ENUM_ADOC_PATH)
@@ -21,7 +24,7 @@ class EnumAdocGenerator {
         if (!enumAdocDirectory.exists()) {
             val isCreated = enumAdocDirectory.mkdirs()
             if (!isCreated) {
-                throw IllegalStateException("디렉토리 생성에 실패하였습니다.")
+                log.error("디렉토리 생성에 실패하였습니다.")
             }
         }
 
@@ -48,9 +51,8 @@ class EnumAdocGenerator {
                 os.write(sb.toString().toByteArray(charset("UTF-8")))
                 os.close()
             } catch (e: Exception) {
-                // nothing
+                log.error("${enumClassName} Enum Asciidoc 작성에 실패하였습니다.")
             }
         }
     }
-
 }

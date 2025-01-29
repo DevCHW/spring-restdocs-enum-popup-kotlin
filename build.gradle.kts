@@ -1,10 +1,7 @@
-import org.gradle.internal.declarativedsl.schemaBuilder.schemaFromTypes
-
 plugins {
     kotlin("jvm")
     kotlin("kapt")
     kotlin("plugin.spring")
-    kotlin("plugin.jpa")
     id("org.springframework.boot")
     id("io.spring.dependency-management")
     id("com.epages.restdocs-api-spec")
@@ -19,7 +16,7 @@ version = "0.0.1-SNAPSHOT"
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of("${property("javaVersion")}")
     }
 }
 
