@@ -4,7 +4,7 @@
 
 ## 관련 문서
 - [Spring RestDocs 개선기(1) - 커스텀 스니펫적용 + Enum UX 개선](https://sandcastle.tistory.com/119)
-- [Spring RestDocs 개선기(2) - 리플렉션 기반 Enum 문서 작성 자동화](https://sandcastle.tistory.com/120)
+- [Spring RestDocs 개선기(2) - 리플렉션을 이용한 Enum 문서 작성 자동화](https://sandcastle.tistory.com/120)
 
 ## 실행 방법
 소스코드 다운로드
